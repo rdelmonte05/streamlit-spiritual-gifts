@@ -22,6 +22,8 @@ if uploaded_file:
     # --- Show Data Preview on Both Pages ---
     st.write("### 📜 Dataset")
     st.dataframe(df)
+    n_respondents = len(df.index)
+    st.write(f"#### # of respondents: {n_respondents}")
 
     if page == "📌 Individual Analysis":
         # --- Individual Search Page ---
@@ -113,7 +115,9 @@ if uploaded_file:
 
             # Function to format autopct (hides percentage for "Others")
             def autopct_func(pct, index):
-                return f"{pct:.1f}%" if labels[index] != "Others" else ""
+                actual_count = sizes[index]
+                percentage = (actual_count / n_respondents) * 100  # Now uses total_rows
+                return f"{percentage:.1f}%" if labels[index] != "Others" else ""
 
             # Create pie chart
             wedges, texts, autotexts = ax.pie(
