@@ -55,8 +55,6 @@ if uploaded_file:
                             placeholder="🔍 **Enter a name to view their spiritual gifts:**",
                             options=list(df.index))  
 
-
-
         if name in df.index:
             sorted_gifts = df.loc[name].sort_values(ascending=False)
             top_cutoff, bottom_cutoff = sorted_gifts.nlargest(3).min(), sorted_gifts.nsmallest(3).max()
@@ -98,7 +96,7 @@ if uploaded_file:
 
             # Sort values and determine top 5 (including ties)
             df_sorted = df.sort_values(by="Count", ascending=False)
-            top_5_cutoff = df_sorted.iloc[4]["Count"] if len(df_sorted) > 4 else df_sorted.iloc[-1]["Count"]
+            top_5_cutoff = df_sorted.iloc[6]["Count"] if len(df_sorted) > 6 else df_sorted.iloc[-1]["Count"]
             top_5 = df_sorted[df_sorted["Count"] >= top_5_cutoff]
             others = df_sorted[df_sorted["Count"] < top_5_cutoff]
 
