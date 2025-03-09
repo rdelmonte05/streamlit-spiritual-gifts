@@ -12,7 +12,7 @@ st.sidebar.title("🔍 Navigation")
 page = st.sidebar.selectbox("Go to:", ["📌 Individual Analysis", "📊 Overall Analysis"])
 
 # --- File Upload ---
-st.sidebar.markdown("### 📂 Upload CSV File")
+# st.sidebar.markdown("### 📂 Upload CSV File")
 #uploaded_file = st.sidebar.file_uploader("", type=["csv"])
 uploaded_file = script_dir / 'input/raw_data.csv'
 
@@ -29,28 +29,6 @@ if uploaded_file:
         # --- Individual Search Page ---
         st.title("📌 Individual Spiritual Gifts Analysis")
 
-        # --- Styled Search Input ---
-        # --- Enhanced Styled Search Input ---
-        st.markdown(
-            """
-            <style>
-                .stTextInput>div>div>input {
-                    font-size: 20px !important;
-                    padding: 12px !important;
-                    border: 2px solid #4F8BF9 !important;
-                    background-color: #EAF2FF !important;
-                    width: 100% !important; /* Makes input box full width */
-                    border-radius: 8px !important;
-                }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-
-        # --- Wider and More Visible Input Box ---
-        #name = st.text_input("🔍 **Enter a name to view their spiritual gifts:**", 
-        #                     placeholder="Type a name here...", 
-        #                     key="name_input")
         name = st.selectbox(label='Name to view their spiritual gifts',
                             placeholder="🔍 **Enter a name to view their spiritual gifts:**",
                             options=list(df.index))  
